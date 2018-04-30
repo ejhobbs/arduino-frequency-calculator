@@ -7,7 +7,6 @@
 #include<util/atomic.h>
 
 volatile unsigned long timer1;
-long millis_since;
 /**
  * On fire of timer1 interrupt, increment counter
 */

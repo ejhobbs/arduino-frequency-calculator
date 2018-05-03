@@ -8,6 +8,7 @@ int main (void) {
   unsigned long freq = 0;
   unsigned long count = 0;
   DDRB = 0x00; // Set all 'B' ports to input
+  init();
   while(1) {
     /* Pin 12 high? */
     if (PINB & (1<<PINB4)){

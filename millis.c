@@ -25,3 +25,16 @@ unsigned long millis() {
 
   return now;
 }
+/**
+ * Set up registers for clock to function, and enable interrupts
+*/
+void init() {
+  TCCR1B |= (1 << WGM12) | (1 << CS11);
+
+  OCR1AH = (CTC_MATCH_OVERFLOW >> 8);
+  OCR1AL = (CTC_MATCH_OVERFLOW);
+
+  TIMSK1 |= (1 << OCIE1A);
+
+  sei();
+}

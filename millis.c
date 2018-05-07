@@ -30,7 +30,7 @@ unsigned long millis() {
 /**
  * Set up registers for clock to function, and enable interrupts
 */
-void init() {
+void millis_init() {
   TCCR1B |= (1 << WGM12) | (1 << CS11);
 
   OCR1AH = (CTC_MATCH_OVERFLOW >> 8);

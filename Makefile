@@ -1,4 +1,4 @@
-PORT := /dev/ttyUSB0
+PORT := /dev/ttyUSB1
 MODEL := atmega328p
 PROG := arduino
 RATE := 115200
@@ -27,4 +27,4 @@ clean:
 	rm $(OUT)*
 
 %.o:%.c # Compile all source files
-	avr-gcc -Os -DF_CPU=16000000UL -mmcu=$(MODEL) -c $< -o $@
+	avr-gcc -Os -DF_CPU=16000000UL -DBAUD=9600 -mmcu=$(MODEL) -c $< -o $@

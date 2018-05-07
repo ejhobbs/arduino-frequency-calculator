@@ -6,6 +6,8 @@
 #include<avr/interrupt.h>
 #include<util/atomic.h>
 
+#define CTC_MATCH_OVERFLOW ((F_CPU / 1000) /8)
+
 volatile unsigned long timer1;
 /**
  * On fire of timer1 interrupt, increment counter

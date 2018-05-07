@@ -25,11 +25,10 @@ int main (void) {
     }
     /* 1s since last frequency check? */
     if((millis() - now) > 1000){
-      setFreq(&freq, &count);
+      unsigned long f = setFreq(&freq, &count);
+      now = millis();
+      printf("Frequency: %u\n",f);
     }
-    puts("Hello, world");
-    input = getchar();
-    printf("you wrote: %c\n", input);
   }
 }
 
@@ -39,10 +38,11 @@ int main (void) {
  * will build up an avg over time and ideally level the
  * value out a bit
 */
-void setFreq(unsigned long *freq, unsigned long *count){
+unsigned long setFreq(unsigned long *freq, unsigned long *count){
   if(*freq != 0){
     *freq = (*freq+*count)/2;
   } else {
     *freq = *count;
   }
+  return *freq;
 }

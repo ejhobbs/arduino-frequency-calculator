@@ -1,4 +1,4 @@
 
-void setFreq(unsigned long *freq, unsigned long *count);
+unsigned long setFreq(unsigned long *freq, unsigned long *count);
 
 int main(void);

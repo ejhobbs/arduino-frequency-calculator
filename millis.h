@@ -1,2 +1,2 @@
 unsigned long millis();
-void init();
+void millis_init();

@@ -1,14 +1,23 @@
+#include <stdio.h>
 #include <avr/io.h>
 #include "millis.h"
+#include "serial.h"
+#include "freq-calc.h"
 
-void setFreq(unsigned long *freq, unsigned long *count);
 
 int main (void) {
+  /* Serial setup */
+  uart_init();
+  stdout = &uart_output;
+  stdin = &uart_input;
+  char input;
+  /* Freq Setup */
   unsigned long now = millis();
   unsigned long freq = 0;
   unsigned long count = 0;
+  millis_init();
+ /* Port Setup */
   DDRB = 0x00; // Set all 'B' ports to input
-  init();
   while(1) {
     /* Pin 12 high? */
     if (PINB & (1<<PINB4)){
@@ -18,6 +27,9 @@ int main (void) {
     if((millis() - now) > 1000){
       setFreq(&freq, &count);
     }
+    puts("Hello, world");
+    input = getchar();
+    printf("you wrote: %c\n", input);
   }
 }
 

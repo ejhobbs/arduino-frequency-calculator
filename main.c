@@ -2,15 +2,10 @@
 #include <avr/io.h>
 #include "millis.h"
 #include "serial.h"
-#include "freq-calc.h"
+#include "main.h"
 
 
 int main (void) {
-  /* Serial setup */
-  uart_init();
-  stdout = &uart_output;
-  stdin = &uart_input;
-  char input;
   /* Freq Setup */
   unsigned long now = millis();
   unsigned long freq = 0;
@@ -27,7 +22,6 @@ int main (void) {
     if((millis() - now) > 1000){
       unsigned long f = setFreq(&freq, &count);
       now = millis();
-      printf("Frequency: %u\n",f);
     }
   }
 }
